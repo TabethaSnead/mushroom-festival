@@ -48,10 +48,10 @@ addFriendButton.addEventListener('click', () => {
     // }
     // create a new friend object
     const newFriend = {
-        name: nameInput || `randomFriend ${Math.floor(Math.random() * 150)}`,
+        name: nameInput || `Friend ${Math.floor(Math.random() * 150)}`,
         satisfaction: 1,
     };
-    console.log(newFriend);
+
     // push it into the friends state array, passed in as an argument
     friendData.push(newFriend);
     // clear out the input element
