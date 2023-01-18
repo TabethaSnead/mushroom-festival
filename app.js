@@ -43,11 +43,15 @@ addMushroomButton.addEventListener('click', () => {
 addFriendButton.addEventListener('click', () => {
     // get the name from the input
     const nameInput = friendInputEl.value;
-    if (!nameInput) {
-        return;
-    }
+    // if (!nameInput) {
+    //     return;
+    // }
     // create a new friend object
-    const newFriend = { name: nameInput, satisfaction: 1 };
+    const newFriend = {
+        name: nameInput || `randomFriend ${Math.floor(Math.random() * 150)}`,
+        satisfaction: 1,
+    };
+    console.log(newFriend);
     // push it into the friends state array, passed in as an argument
     friendData.push(newFriend);
     // clear out the input element
@@ -72,6 +76,12 @@ function displayFriends() {
                 mushroomCount--;
                 displayFriends();
                 displayMushrooms();
+            } else if (friend.satisfaction === 3) {
+                alert('They are full! Give mushrooms to someone else');
+                return;
+            } else if (mushroomCount === 0) {
+                alert('go forage for another mushroom!!');
+                return;
             }
         });
         //         and if the friend's satisfaction level is below 3 and you have mushrooms left
